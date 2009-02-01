@@ -1,7 +1,3 @@
-#!/usr/bin/env ruby
-
-require 'date'
-
 class Blockprojet
   attr_accessor :nom, :heures
   

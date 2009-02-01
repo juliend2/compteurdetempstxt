@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 # date
 require 'date'
 # blocs
