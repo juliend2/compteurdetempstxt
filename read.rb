@@ -7,11 +7,13 @@ require 'Blockprojet'
 # time range
 require 'Timerange'
 
+# filepath = "./09-01-31.txt"
+filepath = ARGV[0]
 
 file ='' # file string
 
 # looper dans le fichier :
-File.open("./09-01-31.txt").each { |line|
+File.open(filepath).each { |line|
   file += line
 }
 
@@ -21,7 +23,8 @@ file.gsub(/^[a-z ]+:\s?\n(?:\s+\d{1,2}h\d{1,2} - \d{1,2}h\d{1,2}\n)+/mi){ |match
   nomproj = match[/^[a-z ]+/i] # trouver le nom du projet 
   heures = Array.new
   # sub match processing :
-  match.gsub(/(\d{1,2}h\d{1,2}) - (\d{1,2}h\d{1,2})/) { |line|
+  # * A noter que si une ligne commence par autre chose qu'un tab, elle ne sera pas comptee, on peut donc faire des commentaires avec # en debut de ligne
+  match.gsub(/^\t(\d{1,2}h\d{1,2}) - (\d{1,2}h\d{1,2})/) { |line|
     heures << Timerange.new(line[$1], line[$2]) # faire objet Timerange
   }
   blocsarray << Blockprojet.new(nomproj, heures) # faire objet Blockprojet
