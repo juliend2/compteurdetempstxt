@@ -19,7 +19,7 @@ File.open(filepath).each { |line|
 
 blocsarray = Array.new
 # Faire des objets en trouvant les projets et les heures dans le fichier : 
-file.gsub(/^[^\:]+:\s?\n(?:\s+\d{1,2}h\d{1,2} - \d{1,2}h\d{1,2}\n)+/mi){ |match|
+file.gsub(/^[^\:]+:\s?\n(?:\s+\d{1,2}h\d{1,2} - \d{1,2}h\d{1,2}\n?)+/mi){ |match|
   nomproj = match[/^[^\:]+/i] # trouver le nom du projet 
   heures = Array.new
   # sub match processing :
